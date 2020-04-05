@@ -19,7 +19,7 @@ MacBook-Pro:hello sah$ for d in rust nim go c; do docker build -t seanharrison/h
 MacBook-Pro:hello sah$ docker image ls | grep hello
 seanharrison/hello   c                   174685e8a1fb        28 hours ago        14.2kB
 seanharrison/hello   go                  ad802d8fcbe2        28 hours ago        1.46MB
-seanharrison/hello   nim                 9808f4db50f5        14 seconds ago       208kB
+seanharrison/hello   nim                 b70cf310d449        3 seconds ago       182kB
 seanharrison/hello   rust                79b7fa1ecf11        49 minutes ago      1.19MB
 ```
 
@@ -29,7 +29,7 @@ image                   | size
 ------------------------|----------:
 seanharrison/hello:c    | 3.88 KB
 seanharrison/hello:go   | 580.33 KB
-seanharrison/hello:nim  | 70.15 KB
+seanharrison/hello:nim  | 66.36 KB
 seanharrison/hello:rust | 388.72 KB
 
 <https://hub.docker.com/repository/docker/seanharrison/hello/tags>
