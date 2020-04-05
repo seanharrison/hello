@@ -5,3 +5,7 @@ authors = ["Sean Harrison <sah@bookgenesis.com>"]
 edition = "2018"
 
 [dependencies]
+
+[profile.release]
+lto = true
+panic = 'abort'

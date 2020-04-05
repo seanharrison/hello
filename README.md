@@ -17,12 +17,18 @@ It's interesting to see how big the resulting images are:
 MacBook-Pro:hello sah$ for d in rust go c; do docker build -t seanharrison/hello:$d $d; done
 ...
 MacBook-Pro:hello sah$ docker image ls | grep hello
-seanharrison/hello   c                   174685e8a1fb        2 minutes ago       14.2kB
-seanharrison/hello   go                  ad802d8fcbe2        2 minutes ago       1.46MB
-seanharrison/hello   rust                2d155719e3a3        2 minutes ago       2.9MB
+seanharrison/hello   c                   174685e8a1fb        28 hours ago        14.2kB
+seanharrison/hello   go                  ad802d8fcbe2        28 hours ago        1.46MB
+seanharrison/hello   rust                79b7fa1ecf11        49 minutes ago      1.19MB
 ```
 
-On hub.docker.com, the compressed seanharrison/hello:c image is currently 3.88 KB. <https://hub.docker.com/repository/docker/seanharrison/hello/tags>
+On hub.docker.com, the compressed seanharrison/hello images are currently:
+
+* seanharrison/hello:c — 3.88 KB
+* seanharrison/hello:go — 580.33 KB
+* seanharrison/hello:rust — 388.72 KB
+
+<https://hub.docker.com/repository/docker/seanharrison/hello/tags>
 
 ## Why
 
