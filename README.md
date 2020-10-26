@@ -14,23 +14,61 @@ $ docker run hello:c
 It's interesting to see how big the resulting images are:
 
 ```bash
-MacBook-Pro:hello sah$ for d in rust nim go c; do docker build -t seanharrison/hello:$d $d; done
+# start from a clean docker system
+$ docker system prune -af
+# pre-pull all the base images for a better apples-to-apples comparison
+$ for image in nimlang/nim:alpine alpine:latest golang rust:latest alpine:latest; do docker pull $image; done
+# time each build
+$ for l in c d go nim rust; do cd $l; time docker build . -t seanharrison/hello:$l; cd ..; done
 ...
-MacBook-Pro:hello sah$ docker image ls | grep hello
-seanharrison/hello   c                   174685e8a1fb        28 hours ago        14.2kB
-seanharrison/hello   go                  ad802d8fcbe2        28 hours ago        1.46MB
-seanharrison/hello   nim                 b70cf310d449        3 seconds ago       182kB
-seanharrison/hello   rust                79b7fa1ecf11        49 minutes ago      1.19MB
+Successfully tagged seanharrison/hello:c
+
+real	0m3.764s
+user	0m0.283s
+sys	0m0.435s
+...
+Successfully tagged seanharrison/hello:d
+
+real	0m41.995s
+user	0m0.271s
+sys	0m0.213s
+...
+Successfully tagged seanharrison/hello:go
+
+real	0m45.618s
+user	0m0.268s
+sys	0m0.247s
+...
+Successfully tagged seanharrison/hello:nim
+
+real	0m13.061s
+user	0m0.277s
+sys	0m0.261s
+...
+Successfully tagged seanharrison/hello:rust
+
+real	1m4.721s
+user	0m0.259s
+sys	0m0.257s
+...
+# view local image sizes
+$ docker image ls | grep seanharrison/hello
+seanharrison/hello                   rust                6e144e2b2877        53 seconds ago       568kB
+seanharrison/hello                   nim                 887166ed12a3        About a minute ago   77.2kB
+seanharrison/hello                   go                  b265db07b326        2 minutes ago        558kB
+seanharrison/hello                   d                   026b0638a118        2 minutes ago        867kB
+seanharrison/hello                   c                   2260e40f9d29        3 minutes ago        14.2kB
 ```
 
 On hub.docker.com, the compressed seanharrison/hello images are currently:
 
 image                   | size
 ------------------------|----------:
-seanharrison/hello:c    | 3.88 KB
-seanharrison/hello:go   | 580.33 KB
-seanharrison/hello:nim  | 66.36 KB
-seanharrison/hello:rust | 388.72 KB
+seanharrison/hello:c    |   3.89 KB
+seanharrison/hello:d    | 825.31 KB
+seanharrison/hello:go   | 533.04 KB
+seanharrison/hello:nim  |  73.67 KB
+seanharrison/hello:rust | 542.56 KB
 
 <https://hub.docker.com/repository/docker/seanharrison/hello/tags>
 

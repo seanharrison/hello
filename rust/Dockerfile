@@ -6,6 +6,9 @@ WORKDIR /code
 RUN rustup target add x86_64-unknown-linux-musl
 RUN cargo build --release --target x86_64-unknown-linux-musl
 
+RUN apt-get update && apt-get install -y upx
+RUN upx /code/target/x86_64-unknown-linux-musl/release/hello
+
 FROM scratch
 COPY --from=compiler /code/target/x86_64-unknown-linux-musl/release/hello /hello
 CMD ["/hello"]
