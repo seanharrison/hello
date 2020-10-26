@@ -1,10 +1,10 @@
 FROM alpine:latest as compiler
 
-RUN apk update && apk add gcc-gdc upx
+RUN apk update && apk add ldc gcc libc-dev upx
 
 WORKDIR /code
 COPY . /code
-RUN gdc -static -no-pie -o hello hello.d
+RUN ldc2 --static -O --release hello.d
 RUN upx hello
 
 FROM scratch

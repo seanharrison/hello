@@ -56,7 +56,7 @@ $ docker image ls | grep seanharrison/hello
 seanharrison/hello                   rust                6e144e2b2877        53 seconds ago       568kB
 seanharrison/hello                   nim                 887166ed12a3        About a minute ago   77.2kB
 seanharrison/hello                   go                  b265db07b326        2 minutes ago        558kB
-seanharrison/hello                   d                   026b0638a118        2 minutes ago        867kB
+seanharrison/hello                   d                   1583695336ae        6 seconds ago        739kB
 seanharrison/hello                   c                   2260e40f9d29        3 minutes ago        14.2kB
 ```
 
