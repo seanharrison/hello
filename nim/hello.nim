@@ -1,1 +1,1 @@
-echo "Hi"
+echo "Hello from Nim!"
