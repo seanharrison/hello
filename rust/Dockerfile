@@ -1,4 +1,5 @@
 FROM rust:latest as compiler
+
 COPY . /code
 WORKDIR /code
 
