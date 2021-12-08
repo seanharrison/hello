@@ -1,9 +1,14 @@
 FROM alpine:latest as compiler
 
 WORKDIR /code
-RUN apk update && apk add sbcl upx
-COPY ./hello.cl /code
+COPY ./hello.cl ./build.cl /code/
+RUN apk update \
+    && apk add sbcl \
+    && sbcl --script build.cl \
+    && apk del sbcl 
 
-# FROM scratch
-# COPY --from=compiler /code/hello /hello
-# CMD ["/hello"]
+CMD ["/code/hello"]
+
+FROM alpine:latest
+COPY --from=compiler /code/hello /hello
+CMD ["/hello"]
