@@ -1,4 +1,6 @@
 #!/bin/bash
 for f in $(ls -d */ | cut -f1 -d'/'); do
-    docker push seanharrison/hello:$f
+    t=seanharrison/hello:$f
+    echo $t
+    docker push $t
 done
