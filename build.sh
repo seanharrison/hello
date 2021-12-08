@@ -1,11 +1,10 @@
 #!/bin/bash
 
-for f in c d go nim rust
-do cd $f
+for f in $(ls -d */ | cut -f1 -d'/'); do
+    cd $f
     echo $f
     time docker build . -t seanharrison/hello:$f
     cd ..
-    docker run --rm -it seanharrison/hello:$f
+    time docker run --rm seanharrison/hello:$f
 done
-docker image ls | grep seanharrison/hello
-docker push seanharrison/hello
+docker image ls | grep seanharrison/hello | sort

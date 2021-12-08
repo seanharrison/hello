@@ -4,14 +4,17 @@
 
 This purpose of this repository is to create the smallest possible docker image that does something when run. 
 
-To use, pick a language (current c, go, rust) -- the example uses c. Make sure docker is running, then:
+To use, make sure docker is running, then:
 
 ```bash
-$ docker build -t hello:c c
-$ docker run hello:c
+# in bash
+./build.sh
+for t in c d go nim rust zig; do 
+    time docker run hello:$t
+done
 ```
 
-It's interesting to see how big the resulting images are:
+It's interesting to see how big the resulting images are, and how fast they build:
 
 ```bash
 # start from a clean docker system
@@ -52,12 +55,13 @@ user	0m0.259s
 sys	0m0.257s
 ...
 # view local image sizes
-$ docker image ls | grep seanharrison/hello
-seanharrison/hello                   rust                6e144e2b2877        53 seconds ago       568kB
-seanharrison/hello                   nim                 887166ed12a3        About a minute ago   77.2kB
-seanharrison/hello                   go                  b265db07b326        2 minutes ago        558kB
-seanharrison/hello                   d                   1583695336ae        6 seconds ago        739kB
-seanharrison/hello                   c                   2260e40f9d29        3 minutes ago        14.2kB
+$ docker image ls | grep seanharrison/hello | sort
+seanharrison/hello   c         b9d580b46076   29 minutes ago   14.3kB
+seanharrison/hello   d         c06a67ac7234   8 months ago     734kB
+seanharrison/hello   go        20bee99ab00a   28 minutes ago   514kB
+seanharrison/hello   nim       6b90bb5b07fc   28 minutes ago   69.4kB
+seanharrison/hello   rust      212a84bdc44c   27 minutes ago   495kB
+seanharrison/hello   zig       08bcdcf32dd7   6 minutes ago    571kB
 ```
 
 On hub.docker.com, the compressed seanharrison/hello images are currently:
@@ -69,6 +73,7 @@ seanharrison/hello:d    | 825.31 KB
 seanharrison/hello:go   | 533.04 KB
 seanharrison/hello:nim  |  73.67 KB
 seanharrison/hello:rust | 542.56 KB
+seanharrison/hello:zig  | 186.20 KB
 
 <https://hub.docker.com/repository/docker/seanharrison/hello/tags>
 
@@ -94,4 +99,4 @@ From there it was straightforward:
 
 ## Who
 
-I'm Sean Harrison, I run <https://bookgenesis.com> and work with <https://caktusgroup.com>. 
+I'm Sean Harrison, I run <https://bookgenesis.com> and work with <https://inmar.com> and <https://bluecrossnc.com/>. 
