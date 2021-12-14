@@ -4,8 +4,7 @@ WORKDIR /code
 COPY ./hello.cl ./build.cl /code/
 RUN apk update \
     && apk add sbcl \
-    && sbcl --script build.cl \
-    && apk del sbcl 
+    && sbcl --script build.cl 
 
 CMD ["/code/hello"]
 
