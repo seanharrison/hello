@@ -1,2 +1,5 @@
-(format t "Hello from ECL!~%")
-(quit)
+(defun hello ()
+    (format t "Hello from ECL!~%"))
+(hello)
+(si:exit)
+

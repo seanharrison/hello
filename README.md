@@ -56,12 +56,27 @@ sys	0m0.257s
 ...
 # view local image sizes
 $ docker image ls | grep seanharrison/hello | sort
-seanharrison/hello   c         b9d580b46076   29 minutes ago   14.3kB
-seanharrison/hello   d         c06a67ac7234   8 months ago     734kB
-seanharrison/hello   go        20bee99ab00a   28 minutes ago   514kB
-seanharrison/hello   nim       6b90bb5b07fc   28 minutes ago   69.4kB
-seanharrison/hello   rust      212a84bdc44c   27 minutes ago   495kB
-seanharrison/hello   zig       08bcdcf32dd7   6 minutes ago    571kB
+seanharrison/hello  c      13de8a2f77d8   4 weeks ago      14.3kB
+seanharrison/hello  d      c06a67ac7234   9 months ago     734kB
+seanharrison/hello  ecl    9e394ba63e83   17 minutes ago   17.5MB
+seanharrison/hello  go     e20453262f60   4 weeks ago      514kB
+seanharrison/hello  nim    ad8c5644d68a   4 weeks ago      69.4kB
+seanharrison/hello  py     7c8b4b4af9d2   4 weeks ago      45.4MB
+seanharrison/hello  rust   1f1c2e109bb9   4 weeks ago      495kB
+seanharrison/hello  sbcl   22e30d3a1b6e   3 minutes ago    15.1MB
+seanharrison/hello  zig    708d40b2e4c7   4 weeks ago      571kB
+```
+Sorted by size:
+```
+seanharrison/hello  c      13de8a2f77d8   4 weeks ago      14.3kB
+seanharrison/hello  nim    ad8c5644d68a   4 weeks ago      69.4kB
+seanharrison/hello  rust   1f1c2e109bb9   4 weeks ago      495kB
+seanharrison/hello  go     e20453262f60   4 weeks ago      514kB
+seanharrison/hello  zig    708d40b2e4c7   4 weeks ago      571kB
+seanharrison/hello  d      c06a67ac7234   9 months ago     734kB
+seanharrison/hello  sbcl   22e30d3a1b6e   19 seconds ago   15.1MB
+seanharrison/hello  ecl    9e394ba63e83   14 minutes ago   17.5MB
+seanharrison/hello  py     7c8b4b4af9d2   4 weeks ago      45.4MB
 ```
 
 On hub.docker.com, the compressed seanharrison/hello images are currently:
