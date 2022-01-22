@@ -1,4 +1,4 @@
-FROM alpine:latest as compiler
+FROM alpine:3.13 as compiler
 
 RUN apk update && apk add ldc gcc libc-dev upx
 
