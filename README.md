@@ -68,27 +68,31 @@ seanharrison/hello  zig    708d40b2e4c7   4 weeks ago      571kB
 ```
 Sorted by size:
 ```
-seanharrison/hello  c      13de8a2f77d8   4 weeks ago      14.3kB
-seanharrison/hello  nim    ad8c5644d68a   4 weeks ago      69.4kB
-seanharrison/hello  rust   1f1c2e109bb9   4 weeks ago      495kB
-seanharrison/hello  go     e20453262f60   4 weeks ago      514kB
-seanharrison/hello  zig    708d40b2e4c7   4 weeks ago      571kB
-seanharrison/hello  d      c06a67ac7234   9 months ago     734kB
-seanharrison/hello  sbcl   22e30d3a1b6e   19 seconds ago   15.1MB
-seanharrison/hello  ecl    9e394ba63e83   14 minutes ago   17.5MB
-seanharrison/hello  py     7c8b4b4af9d2   4 weeks ago      45.4MB
+# (see build.sh)
+14.3kB  seanharrison/hello:c    d87a8a778393    40 minutes ago
+69.4kB  seanharrison/hello:nim  38b19f49b193    39 minutes ago
+514kB   seanharrison/hello:go   5eeb9645b273    39 minutes ago
+519kB   seanharrison/hello:rust 82143e08ef69    38 minutes ago
+571kB   seanharrison/hello:zig  cf1d98b861ee    38 minutes ago
+734kB   seanharrison/hello:d    2393952dd742    40 minutes ago
+15100kB seanharrison/hello:sbcl d5128bdc37f0    38 minutes ago
+17500kB seanharrison/hello:ecl  1d05415e682f    39 minutes ago
+48700kB seanharrison/hello:py   64568d5dc01e    39 minutes ago
 ```
 
 On hub.docker.com, the compressed seanharrison/hello images are currently:
 
 image                   | size
 ------------------------|----------:
-seanharrison/hello:c    |   3.89 KB
-seanharrison/hello:d    | 825.31 KB
-seanharrison/hello:go   | 533.04 KB
-seanharrison/hello:nim  |  73.67 KB
-seanharrison/hello:rust | 542.56 KB
+seanharrison/hello:c    |   4.06 KB
+seanharrison/hello:nim  |  66.31 KB
 seanharrison/hello:zig  | 186.20 KB
+seanharrison/hello:go   | 491.29 KB
+seanharrison/hello:rust | 497.73 KB
+seanharrison/hello:d    | 701.87 KB
+seanharrison/hello:ecl  |   8.28 MB
+seanharrison/hello:sbcl |  11.30 MB
+seanharrison/hello:py   |  18.15 MB
 
 <https://hub.docker.com/repository/docker/seanharrison/hello/tags>
 
