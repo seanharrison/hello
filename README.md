@@ -7,20 +7,12 @@ This purpose of this repository is to create the smallest possible docker image 
 To use, make sure docker is running, then:
 
 ```bash
-# in bash
-./build.sh
-for t in c d go nim rust zig; do 
-    time docker run hello:$t
-done
-```
-
-It's interesting to see how big the resulting images are, and how fast they build:
-
-```bash
-# start from a clean docker system
+# start from a clean docker system, if you wish
 $ docker system prune -af
+
 # pre-pull all the base images for a better apples-to-apples comparison
 $ ./pull.sh
+
 # time each build
 $ ./build.sh
 ...
@@ -28,8 +20,14 @@ Successfully tagged seanharrison/hello:c
 
 real	0m3.764s
 user	0m0.283s
-sys	0m0.435s
-...
+sys	    0m0.435s
+... 
+# (etc.)
+```
+
+It's interesting to see how big the resulting images are, and how fast they build:
+
+```bash
 # view local image sizes Sorted by size (see build.sh):
 $ ./ls.sh
 14.3kB  seanharrison/hello:c    13745c37b613    8 minutes ago
@@ -44,21 +42,10 @@ $ ./ls.sh
 19.5MB  seanharrison/hello:ecl  a96526d756a7    7 minutes ago
 48.7MB  seanharrison/hello:py   120947628c91    6 minutes ago
 81.4MB  seanharrison/hello:ex   5f4bf939610d    7 minutes ago
+
+# push current images to docker hub
+$ ./push.sh
 ```
-
-On hub.docker.com, the compressed seanharrison/hello images are currently:
-
-image                   | size
-------------------------|----------:
-seanharrison/hello:c    |   4.06 KB
-seanharrison/hello:nim  |  66.31 KB
-seanharrison/hello:zig  | 186.20 KB
-seanharrison/hello:go   | 491.29 KB
-seanharrison/hello:rust | 497.73 KB
-seanharrison/hello:d    | 701.87 KB
-seanharrison/hello:ecl  |   8.28 MB
-seanharrison/hello:sbcl |  11.30 MB
-seanharrison/hello:py   |  18.15 MB
 
 <https://hub.docker.com/repository/docker/seanharrison/hello/tags>
 
