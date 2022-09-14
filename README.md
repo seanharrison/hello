@@ -28,7 +28,7 @@ sys	    0m0.435s
 It's interesting to see how big the resulting images are, and how fast they build:
 
 ```bash
-# view local image sizes Sorted by size (see build.sh):
+# view local image sizes Sorted by size (see ls.sh):
 $ ./ls.sh
 14.3kB  seanharrison/hello:c    13745c37b613    8 minutes ago
 71.1kB  seanharrison/hello:nim  142d3d1bcaa6    7 minutes ago
@@ -51,7 +51,7 @@ $ ./push.sh
 
 ## Why
 
-A colleague recently told me about the scratch docker image, with which you can create a docker image that contains (almost) nothing but what you put into it. I took this as a challenge and started looking at ways to compile a tiny executable that would run on scratch with no operating system. 
+In early 2020, a colleague told me about the scratch docker image, with which you can create a docker image that contains (almost) nothing but what you put into it. I took this as a challenge and started looking at ways to compile a tiny executable that would run on scratch with no operating system. 
 
 I work with Python daily, and the resulting docker images are usually > 1 GB. I wanted to try something different.
 
@@ -61,13 +61,16 @@ To inspire myself and others.
 
 ## How
 
-The hunt led me to musl for libc and C, Rust, and Go as contenders for writing the executable (ECL was also in the running, but I couldn't get the binary to compile with musl on Alpine — ECL seems to require glibc rather than musl for static linking of compiled binaries). 
+The hunt led me first to Alpine and musl to build, and scratch to deploy. I started with C, Rust, and Go as contenders for writing the executable. 
 
-From there it was straightforward:
+From there it was straightforward: For each language,
 
-1. Write a short "hello" program in C / Go / Rust. Usually the first bit of code you see for any language.
+1. Write a short "hello" program. Usually the first bit of code you see for any language.
 2. Compile it with the most compact static linking the platform provides.
-3. Do that using a multistage Dockerfile, and copy the resulting executable into scratch.
+3. Use upx to pack images (some languages don't response well this -- see sbcl).
+4. Do that in a multistage Dockerfile, and copy the resulting executable into `scratch`.
+
+Though I started with C, Rust, and Go, I have since extended to quite a few other language platforms. This turns out to be a pretty educational project, not so much for learning those languages, but for learning how well or poorly those languages are able to compile small, statically linked executables that run on `scratch`. (Hint: The above image size listing is a pretty good ranking proxy.)
 
 ## Who
 
