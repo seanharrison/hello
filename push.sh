@@ -1,6 +1,6 @@
 #!/bin/bash
-for f in $(ls -d */ | cut -f1 -d'/'); do
-    t=seanharrison/hello:$f
-    echo $t
-    docker push $t
+
+for image in $(docker image ls | grep seanharrison/hello | awk '{print $1 ":" $2}'); do
+    echo $image
+    docker push $image
 done

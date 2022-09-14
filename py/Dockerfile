@@ -1,4 +1,4 @@
-FROM python:alpine
+FROM python:alpine as python
 
 WORKDIR /code
 COPY ./hello.py /code

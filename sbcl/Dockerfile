@@ -8,6 +8,6 @@ RUN apk update \
 
 CMD ["/code/hello"]
 
-FROM alpine:latest
+FROM alpine:latest as alpine
 COPY --from=compiler /code/hello /hello
 CMD ["/hello"]

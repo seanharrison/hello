@@ -9,6 +9,6 @@ RUN rustup target add x86_64-unknown-linux-musl
 RUN cargo build --release --target x86_64-unknown-linux-musl \
     && upx /code/target/x86_64-unknown-linux-musl/release/hello
 
-FROM scratch
+FROM scratch as static
 COPY --from=compiler /code/target/x86_64-unknown-linux-musl/release/hello /hello
 CMD ["/hello"]

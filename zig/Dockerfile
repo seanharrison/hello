@@ -6,6 +6,6 @@ RUN wget https://ziglang.org/download/0.8.1/zig-linux-x86_64-0.8.1.tar.xz \
 COPY ./hello.zig /code
 RUN zig-linux-x86_64-0.8.1/zig build-exe hello.zig
 
-FROM scratch
+FROM scratch as static
 COPY --from=compiler /code/hello /hello
 CMD ["/hello"]

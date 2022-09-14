@@ -6,6 +6,6 @@ COPY . /code
 RUN nim c -d:release --passL:"-static -no-pie" hello.nim \
     && upx hello
 
-FROM scratch
+FROM scratch as static
 COPY --from=compiler /code/hello /hello
 CMD ["/hello"]

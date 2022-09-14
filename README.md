@@ -16,7 +16,7 @@ $ ./pull.sh
 # time each build
 $ ./build.sh
 ...
-Successfully tagged seanharrison/hello:c
+Successfully tagged seanharrison/hello:c-static
 
 real	0m3.764s
 user	0m0.283s
@@ -30,24 +30,46 @@ It's interesting to see how big the resulting images are, and how fast they buil
 ```bash
 # view local image sizes Sorted by size (see ls.sh):
 $ ./ls.sh
-14.3kB  seanharrison/hello:c    13745c37b613    8 minutes ago
-71.1kB  seanharrison/hello:nim  142d3d1bcaa6    7 minutes ago
-538kB   seanharrison/hello:go   feaa214ce4a8    7 minutes ago
-541kB   seanharrison/hello:rust 7f65bab228df    6 minutes ago
-571kB   seanharrison/hello:zig  24ea1eeb9558    6 minutes ago
-734kB   seanharrison/hello:d    d0487237e5cf    7 minutes ago
-836kB   seanharrison/hello:cr   66eaff29b038    7 minutes ago
-1.3MB   seanharrison/hello:hs   ae94620cdd1c    7 minutes ago
-16.5MB  seanharrison/hello:sbcl a91b065a3c0d    6 minutes ago
-19.5MB  seanharrison/hello:ecl  a96526d756a7    7 minutes ago
-48.7MB  seanharrison/hello:py   120947628c91    6 minutes ago
-81.4MB  seanharrison/hello:ex   5f4bf939610d    7 minutes ago
+14.3kB  seanharrison/hello:c-static     fb1e000235fa    About an hour
+71.1kB  seanharrison/hello:nim-static   37df259bc670    58 minutes ago
+538kB   seanharrison/hello:go-static    16927fd0f4cb    58 minutes ago
+541kB   seanharrison/hello:rust-static  e55fa2d59adf    58 minutes ago
+571kB   seanharrison/hello:zig-static   575caad5f353    57 minutes ago
+734kB   seanharrison/hello:d-static     86a79fd4c77d    59 minutes ago
+836kB   seanharrison/hello:cr-static    80ac87ccf633    59 minutes ago
+1.3MB   seanharrison/hello:hs-static    4aeec93c4de6    58 minutes ago
+5.56MB  seanharrison/hello:c-alpine     4104a3093ed2    About an hour
+5.65MB  seanharrison/hello:d-alpine     b5136f72e407    51 minutes ago
+5.91MB  seanharrison/hello:cr-alpine    fde9dd70154f    59 minutes ago
+16.5MB  seanharrison/hello:sbcl-alpine  b242cced8f0a    58 minutes ago
+48.7MB  seanharrison/hello:py-python    14a5703ba65a    58 minutes ago
+81.4MB  seanharrison/hello:ex-elixir    a05f7c173fe6    58 minutes ago
 
 # push current images to docker hub
 $ ./push.sh
 ```
 
 <https://hub.docker.com/repository/docker/seanharrison/hello/tags>
+
+2022-09-14: I realized that "smallest image" is not the only interesting metric here. In many contexts, it's the added layers that are the most important metric for runtime performance, because the base image is already cached in the registry. So I added a "target" tag to the name of each image, and set it up so that each language can build several targets. For each target, it is interesting to see how big the added (COPY) layers of the images are -- it adds a different perspective: 
+
+```bash
+$ ./layers.sh
+29B     seanharrison/hello:ex-elixir
+41B     seanharrison/hello:py-python
+14.3kB  seanharrison/hello:c-static
+18.3kB  seanharrison/hello:c-alpine
+26.7kB  seanharrison/hello:d-alpine
+71.1kB  seanharrison/hello:nim-static
+366kB   seanharrison/hello:cr-alpine
+538kB   seanharrison/hello:go-static
+541kB   seanharrison/hello:rust-static
+571kB   seanharrison/hello:zig-static
+734kB   seanharrison/hello:d-static
+836kB   seanharrison/hello:cr-static
+1.3MB   seanharrison/hello:hs-static
+11MB    seanharrison/hello:sbcl-alpine
+```
 
 ## Why
 

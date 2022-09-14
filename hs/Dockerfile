@@ -5,6 +5,6 @@ RUN apk add upx
 COPY Main.hs hello.cabal ./
 RUN ghc -o hello Main -static -optl-static && upx hello
 
-FROM scratch AS prod
+FROM scratch AS static
 COPY --from=build /build/hello /hello
 CMD ["/hello"]
