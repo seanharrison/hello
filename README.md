@@ -20,9 +20,9 @@ It's interesting to see how big the resulting images are, and how fast they buil
 # start from a clean docker system
 $ docker system prune -af
 # pre-pull all the base images for a better apples-to-apples comparison
-$ for image in nimlang/nim:alpine alpine:latest golang rust:latest alpine:latest; do docker pull $image; done
+$ ./pull.sh
 # time each build
-$ for l in c d go nim rust; do cd $l; time docker build . -t seanharrison/hello:$l; cd ..; done
+$ ./build.sh
 ...
 Successfully tagged seanharrison/hello:c
 
@@ -30,40 +30,20 @@ real	0m3.764s
 user	0m0.283s
 sys	0m0.435s
 ...
-Successfully tagged seanharrison/hello:d
-
-real	0m41.995s
-user	0m0.271s
-sys	0m0.213s
-...
-Successfully tagged seanharrison/hello:go
-
-real	0m45.618s
-user	0m0.268s
-sys	0m0.247s
-...
-Successfully tagged seanharrison/hello:nim
-
-real	0m13.061s
-user	0m0.277s
-sys	0m0.261s
-...
-Successfully tagged seanharrison/hello:rust
-
-real	1m4.721s
-user	0m0.259s
-sys	0m0.257s
-...
 # view local image sizes Sorted by size (see build.sh):
-14.3kB  seanharrison/hello:c
-69.4kB  seanharrison/hello:nim
-514kB   seanharrison/hello:go
-519kB   seanharrison/hello:rust
-571kB   seanharrison/hello:zig
-734kB   seanharrison/hello:d
-15100kB seanharrison/hello:sbcl
-17500kB seanharrison/hello:ecl
-48700kB seanharrison/hello:py
+$ ./ls.sh
+14.3kB  seanharrison/hello:c    13745c37b613    8 minutes ago
+71.1kB  seanharrison/hello:nim  142d3d1bcaa6    7 minutes ago
+538kB   seanharrison/hello:go   feaa214ce4a8    7 minutes ago
+541kB   seanharrison/hello:rust 7f65bab228df    6 minutes ago
+571kB   seanharrison/hello:zig  24ea1eeb9558    6 minutes ago
+734kB   seanharrison/hello:d    d0487237e5cf    7 minutes ago
+836kB   seanharrison/hello:cr   66eaff29b038    7 minutes ago
+1.3MB   seanharrison/hello:hs   ae94620cdd1c    7 minutes ago
+16.5MB  seanharrison/hello:sbcl a91b065a3c0d    6 minutes ago
+19.5MB  seanharrison/hello:ecl  a96526d756a7    7 minutes ago
+48.7MB  seanharrison/hello:py   120947628c91    6 minutes ago
+81.4MB  seanharrison/hello:ex   5f4bf939610d    7 minutes ago
 ```
 
 On hub.docker.com, the compressed seanharrison/hello images are currently:
