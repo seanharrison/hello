@@ -70,7 +70,7 @@ From there it was straightforward: For each language,
 3. Use upx to pack images (some languages don't response well this -- see sbcl).
 4. Do that in a multistage Dockerfile, and copy the resulting executable into `scratch`.
 
-Though I started with C, Rust, and Go, I have since extended to quite a few other language platforms. This turns out to be a pretty educational project, not so much for learning those languages, but for learning how well or poorly those languages are able to compile small, statically linked executables that run on `scratch`. (Hint: The above image size listing is a pretty good ranking proxy.)
+Though I started with C, Rust, and Go, I have since extended to quite a few other language platforms. This turns out to be a pretty educational project, not so much for learning those languages, but for learning how well or poorly those languages are able to compile small, statically linked executables that run on `scratch`. (Hint: The above image size listing is a pretty good ranking proxy: C and Nim are _amazing_, everything else through Haskell is very good. From there it goes down hill quickly.)
 
 ## Who
 
