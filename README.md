@@ -51,7 +51,7 @@ $ ./push.sh
 
 <https://hub.docker.com/repository/docker/seanharrison/hello/tags>
 
-2022-09-14: I realized that "smallest image" is not the only interesting metric here. In many contexts, it's the added layers that are the most important metric for runtime performance, because the base image is already cached in the registry. So I added a "target" tag to the name of each image, and set it up so that each language can build several targets. For each target, it is interesting to see how big the added (COPY) layers of the images are -- it adds a different perspective: 
+2022-09-14: I realized that "smallest image" is not the only interesting metric here. In many contexts, it's the added layers that are the most important metric for runtime performance, because the base image is already cached in the registry. So I added a "target" tag to the name of each image, and set it up so that each language can build several targets. For each target, it is interesting to see how big the added (COPY) layers of the images are -- it adds a different perspective: Elixir and Python are tiny by this metric (as most plain-text scripts would be). 
 
 ```bash
 $ ./layers.sh
@@ -98,3 +98,7 @@ Though I started with C, Rust, and Go, I have since extended to quite a few othe
 ## Who
 
 I'm Sean Harrison, I run <https://bookgenesis.com> and work with <https://inmar.com> and <https://bluecrossnc.com/>. 
+
+## What Now
+
+Hit me up with PRs to add languages or make improvements. I plan to continue adding languages and target image types (static vs. linked vs. development).
