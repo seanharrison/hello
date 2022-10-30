@@ -61,6 +61,7 @@ sys	0m0.257s
 519kB   seanharrison/hello:rust
 571kB   seanharrison/hello:zig
 734kB   seanharrison/hello:d
+833kB   seanharrison/hello:cr
 15100kB seanharrison/hello:sbcl
 17500kB seanharrison/hello:ecl
 48700kB seanharrison/hello:py
