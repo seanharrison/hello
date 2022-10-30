@@ -2,7 +2,7 @@
 
 ## What
 
-This purpose of this repository is to create the smallest possible docker image that does something when run. 
+This purpose of this repository is to create the smallest possible docker image that does something when run.
 
 To use, make sure docker is running, then:
 
@@ -21,7 +21,7 @@ Successfully tagged seanharrison/hello:c-static
 real	0m3.764s
 user	0m0.283s
 sys	0m0.435s
-... 
+...
 # (etc.)
 ```
 
@@ -51,7 +51,7 @@ $ ./push.sh
 
 <https://hub.docker.com/repository/docker/seanharrison/hello/tags>
 
-2022-09-14: I realized that "smallest image" is not the only interesting metric here. In many contexts, it's the added layers that are the most important metric for runtime performance, because the base image is already cached in the registry. So I added a "target" tag to the name of each image, and set it up so that each language can build several targets. For each target, it is interesting to see how big the added (COPY) layers of the images are -- it adds a different perspective: Elixir and Python are tiny by this metric (as most plain-text scripts would be). 
+2022-09-14: I realized that "smallest image" is not the only interesting metric here. In many contexts, it's the added layers that are the most important metric for runtime performance, because the base image is already cached in the registry. So I added a "target" tag to the name of each image, and set it up so that each language can build several targets. For each target, it is interesting to see how big the added (COPY) layers of the images are -- it adds a different perspective: Elixir and Python are tiny by this metric (as most plain-text scripts would be).
 
 ```bash
 $ ./layers.sh
@@ -73,7 +73,7 @@ $ ./layers.sh
 
 ## Why
 
-In early 2020, a colleague told me about the `scratch` docker image, with which you can create a docker image that contains (almost) nothing but what you put into it. I took this as a challenge and started looking at ways to compile a tiny executable that would run on `scratch` with no operating system. 
+In early 2020, a colleague told me about the `scratch` docker image, with which you can create a docker image that contains (almost) nothing but what you put into it. I took this as a challenge and started looking at ways to compile a tiny executable that would run on `scratch` with no operating system.
 
 I work with Python daily, and the resulting docker images are usually > 1 GB. I wanted to try something different.
 
@@ -83,7 +83,7 @@ To inspire myself and others.
 
 ## How
 
-The hunt led me first to Alpine and musl to build, and `scratch` to deploy. I started with C, Rust, and Go as contenders for writing the executable. 
+The hunt led me first to Alpine and musl to build, and `scratch` to deploy. I started with C, Rust, and Go as contenders for writing the executable.
 
 From there it was straightforward: For each language,
 
@@ -97,7 +97,7 @@ Though I started with C, Rust, and Go, I have since extended to quite a few othe
 
 ## Who
 
-I'm Sean Harrison, I run <https://bookgenesis.com> and work with <https://inmar.com> and <https://bluecrossnc.com/>. 
+I'm Sean Harrison, I run <https://bookgenesis.com> and work with <https://inmar.com> and <https://bluecrossnc.com/>.
 
 ## What Now
 
