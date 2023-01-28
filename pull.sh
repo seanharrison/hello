@@ -4,6 +4,7 @@ for image in \
     alpine:latest \
     crystallang/crystal:latest-alpine \
     debian:bullseye-slim \
+    elixir:latest \
     golang:latest \
     julia:latest \
     nimlang/nim:alpine \
