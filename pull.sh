@@ -1,13 +1,14 @@
 #!/bin/bash
 for image in \
-    nimlang/nim:alpine \
     alpine:3.13 \
-    crystallang/crystal:latest-alpine \
-    golang \
-    rust:latest \
     alpine:latest \
+    crystallang/crystal:latest-alpine \
     debian:bullseye-slim \
-    utdemir/ghc-musl:v24-ghc884
+    golang:latest \
+    julia:latest \
+    nimlang/nim:alpine \
+    rust:latest \
+    utdemir/ghc-musl:v24-ghc884 
 do 
     docker pull $image
 done

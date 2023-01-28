@@ -17,7 +17,7 @@ FROM alpine:3.13 as compiler
 # ln -s scheme.boot chez.boot
 # ln -s scheme-script.boot chez-script.boot
 
-RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing chez-scheme
+RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/community chez-scheme 
 
 WORKDIR /code
 COPY ./hello.sch /code/

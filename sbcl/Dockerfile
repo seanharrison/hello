@@ -9,5 +9,6 @@ RUN apk update \
 CMD ["/code/hello"]
 
 FROM alpine:latest as alpine
+RUN apk add zstd-libs
 COPY --from=compiler /code/hello /hello
 CMD ["/hello"]
