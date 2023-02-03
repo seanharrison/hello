@@ -3,6 +3,6 @@ defmodule HelloTest do
   doctest Hello
 
   test "greets the world" do
-    assert Hello.hello() == "Hello from Elixir!"
+    assert Hello.main([]) == :ok
   end
 end
