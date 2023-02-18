@@ -1,3 +1,3 @@
-(defn main [& args]
-    (print "Hello from Janet!")
-    0)
+#!/usr/bin/env janet
+(defn main [&]
+    (print "Hello from Janet!"))
