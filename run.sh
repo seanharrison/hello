@@ -8,11 +8,11 @@ else
         if [ "${targets}" ]; then
             for target in $targets; do
                 echo "-- $f-$target --"
-                time docker run seanharrison/hello:$f-$target
+                time docker run --rm seanharrison/hello:$f-$target
             done
         else
             echo "-- $f --"
-            time docker run seanharrison/hello:$f
+            time docker run --rm seanharrison/hello:$f
         fi
     done
 fi
