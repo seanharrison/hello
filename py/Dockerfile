@@ -9,7 +9,7 @@ FROM script AS build
 RUN apk add binutils upx \
     && pip install pyinstaller \
     && pyinstaller --onefile hello.py \
-    && upx -9 dist/hello
+    && upx dist/hello
 
 FROM alpine AS bin
 COPY --from=build /code/dist/hello /hello
