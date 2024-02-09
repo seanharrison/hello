@@ -11,6 +11,6 @@ RUN apk add binutils upx \
     && pyinstaller --onefile hello.py \
     && upx dist/hello
 
-FROM alpine AS bin
+FROM cgr.dev/chainguard/static AS bin
 COPY --from=build /code/dist/hello /hello
 CMD ["/hello"]
